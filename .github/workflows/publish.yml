@@ -1,0 +1,44 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - "backend@*"
+      - "frontend@*"
+
+permissions:
+  contents: write
+
+jobs:
+  sbom:
+    runs-on: ubuntu-latest
+
+    container:
+      image: aquasec/trivy:0.70.0
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine component
+        run: |
+          if [[ "${GITHUB_REF_NAME}" == backend@* ]]; then
+            echo "COMPONENT=backend" >> $GITHUB_ENV
+            echo "SCAN_PATH=backend" >> $GITHUB_ENV
+          elif [[ "${GITHUB_REF_NAME}" == frontend@* ]]; then
+            echo "COMPONENT=frontend" >> $GITHUB_ENV
+            echo "SCAN_PATH=frontend" >> $GITHUB_ENV
+          fi
+
+      - name: Generate SBOM
+        run: |
+          trivy fs "$SCAN_PATH" \
+            --format cyclonedx \
+            --output "sbom-${COMPONENT}-${GITHUB_REF_NAME}.json"
+
+      - name: Upload SBOM to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: sbom-${{ env.COMPONENT }}-${{ github.ref_name }}.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
