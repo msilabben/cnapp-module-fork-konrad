@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/msilabben/cnapp-module/compare/frontend@v1.0.0...frontend@v1.0.1) (2026-04-29)
+
+
+### Bug Fixes
+
+* trigger release please ([a688b3d](https://github.com/msilabben/cnapp-module/commit/a688b3d43ad56bffdadaf5ed00e9455b01d76450))
+
 ## 1.0.0 (2026-04-29)
 
 

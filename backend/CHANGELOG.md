@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.1](https://github.com/msilabben/cnapp-module/compare/backend@v0.1.0...backend@v0.1.1) (2026-04-29)
+
+
+### Bug Fixes
+
+* add tests in pipeline ([ccf62e7](https://github.com/msilabben/cnapp-module/commit/ccf62e7b6b882731d707b7b509665c3081035fe7))
+* trigger release please ([a688b3d](https://github.com/msilabben/cnapp-module/commit/a688b3d43ad56bffdadaf5ed00e9455b01d76450))
+* turn backend into package ([1f66074](https://github.com/msilabben/cnapp-module/commit/1f66074a5fdaaea708123ae7e1a2c5710fd507f6))
+
 ## 0.1.0 (2026-04-29)
 
 
