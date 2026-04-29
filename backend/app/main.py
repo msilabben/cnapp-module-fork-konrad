@@ -1,9 +1,17 @@
-from fastapi import FastAPI
+from importlib.metadata import version, PackageNotFoundError
+
+from fastapi import FastAPI, __version__
 from fastapi.middleware.cors import CORSMiddleware
 
 
+def get_version() -> str:
+    try:
+        return version("backend")
+    except PackageNotFoundError:
+        return "0.0.0-dev"
+
 def create_app():
-    app = FastAPI(title="Simple FastAPI API")
+    app = FastAPI(title="Simple FastAPI API", version=get_version())
 
     app.add_middleware(
         CORSMiddleware,
