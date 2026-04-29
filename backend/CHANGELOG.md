@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/msilabben/cnapp-module/compare/backend@v0.1.2...backend@v0.1.3) (2026-04-29)
+
+
+### Bug Fixes
+
+* **backend:** add version endpoint ([b0f0e6f](https://github.com/msilabben/cnapp-module/commit/b0f0e6fc9dabac340a0fb31f242a456f45b69737))
+
 ## [0.1.2](https://github.com/msilabben/cnapp-module/compare/backend@v0.1.1...backend@v0.1.2) (2026-04-29)
 
 
