@@ -17,6 +17,12 @@ jobs:
     - uses: actions/setup-python@v3
     - uses: pre-commit/action@v3.0.1
 
+  backend-tests:
+    uses: ./.github/workflows/pytest.yml
+    with:
+      working-directory: backend
+      python-version: "3.11"
+
 
   semgrep:
     runs-on: ubuntu-22.04

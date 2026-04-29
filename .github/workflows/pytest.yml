@@ -1,0 +1,40 @@
+name: Pytest
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        required: false
+        type: string
+        default: backend
+      python-version:
+        required: false
+        type: string
+        default: "3.11"
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup uv and python
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ inputs.python-version }}
+          enable-cache: true
+          cache-dependency-glob: |
+            ${{ inputs.working-directory }}/pyproject.toml
+            ${{ inputs.working-directory }}/uv.lock
+
+      - name: Install dependencies
+        run: uv sync --dev --frozen
+
+      - name: Run pytest
+        run: uv run pytest
