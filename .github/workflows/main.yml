@@ -5,6 +5,12 @@ on:
       - main
 
 jobs:
+  backend-tests:
+    uses: ./.github/workflows/pytest.yml
+    with:
+      working-directory: backend
+      python-version: "3.11"
+
   release-please:
     runs-on: ubuntu-22.04
     permissions:
