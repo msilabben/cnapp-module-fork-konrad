@@ -27,7 +27,7 @@ def create_app():
         return {"status": "ok"}
 
     @app.get("/api/version")
-    def version():
+    def api_version():
         return {"version": get_version()}
 
 
