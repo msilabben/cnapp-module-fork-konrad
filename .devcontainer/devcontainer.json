@@ -31,6 +31,11 @@
       }
     }
   },
-  "postCreateCommand": "cd frontend && npm install && cd ../backend && pip install -r requirements.txt",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "installTools": true
+    }
+  },
+  "postCreateCommand": "cd frontend && npm install && cd ../backend && pip install uv pre-commit && uv pip install --system -r requirements.txt && pre-commit install",
   "remoteUser": "vscode"
 }
